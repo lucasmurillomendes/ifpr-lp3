@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ifpr_lp3;
+package telefonica;
 
 /**
  *
  * @author lucas
  */
-public class IFPR_LP3 {
-
-    /**
-     * @param args the command line arguments
-     */
+public class PrincipalFacade {
     public static void main(String[] args) {
-        // TODO code application logic here
+         AtendimentoFacade facade = new AtendimentoFacade();
+         facade.registrarAtendimento(BancoClientes.getInstance().getCliente(1),
+                 BancoServicos.getInstance().getServico(3));
     }
-    
+
 }
