@@ -10,7 +10,7 @@ package atividadeobserver;
  * @author lucas
  */
 public class Curso {
-    
+
     private String nome;
     private Professor professor;
 
@@ -26,7 +26,5 @@ public class Curso {
     public String getNome() {
         return nome;
     }
-    
-    
-    
+
 }

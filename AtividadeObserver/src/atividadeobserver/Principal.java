@@ -19,7 +19,7 @@ public class Principal {
 
         Professor p1 = new Professor("Joao", new Date());
         Professor p2 = new Professor("Pedro", new Date());
-        
+
         Curso curso = new Curso("ADS", p1);
         Curso curso2 = new Curso("Biológicas", p2);
 
@@ -30,9 +30,9 @@ public class Principal {
         p1.addObserver(a1);
         p1.addObserver(a2);
         p1.addObserver(a3);
-        
-      p1.setDataProva(new Date());
-      p2.setDataProva(new Date());
+
+        p1.setDataProva(new Date());
+        p2.setDataProva(new Date());
 
     }
 }

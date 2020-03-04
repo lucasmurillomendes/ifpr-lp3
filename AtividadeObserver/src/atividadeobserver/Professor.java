@@ -39,7 +39,5 @@ public class Professor extends Observable {
         setChanged();
         notifyObservers();
     }
-    
-    
 
 }
