@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fabrica.persintence;
+package br.edu.ifpr.sistema.model.persistence;
 
-import fabrica.persintence.Mysql.MysqlDAOFActory;
-import fabrica.persintence.memory.MemDAOFactory;
+import br.edu.ifpr.sistema.model.persistence.memoria.MemDAOFactory;
+import br.edu.ifpr.sistema.model.persistence.mysql.MysqlDAOFActory;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  *
@@ -18,7 +21,17 @@ public abstract class DAOFactory {
     private static TipoPersistencia persistencia;
 
     @SuppressWarnings("ResultOfObjectAllocationIgnored")
-    public static DAOFactory getDAOFactoryInstance() {
+    public static DAOFactory getDAOFactoryInstance() throws IOException {
+        Properties properties = new Properties();
+        FileInputStream fis = new FileInputStream("configuracoes.properties");
+        properties.load(fis);
+        fis.close();
+        String tipo = properties.getProperty("tipo.persistencia", null);
+        if (tipo != null) {
+            persistencia = TipoPersistencia.valueOf(tipo);
+        } else {
+            throw new IOException("Parâmetro tipo.persistencia não encontrado");
+        }
         if (instancia == null) {
             switch (persistencia) {
                 case MEMORIA:
@@ -36,8 +49,5 @@ public abstract class DAOFactory {
 
     public abstract ClienteDAO getCliente();
 
-    public static void setPersistencia(TipoPersistencia persistencia) {
-        DAOFactory.persistencia = persistencia;
-    }
 
 }
